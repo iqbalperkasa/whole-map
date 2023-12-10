@@ -35,7 +35,7 @@ function handleScroll(ev: WheelEvent) {
 
     <nav
       v-if="isSecondPage"
-      class="absolute right-10 top-10 cursor-pointer text-white"
+      class="animate__animated animate__fadeInUp absolute right-10 top-10 cursor-pointer text-white"
       @click="page = Page.FIRST"
     >
       {{ content?.top_nav?.label }}

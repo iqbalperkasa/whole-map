@@ -20,7 +20,7 @@ function scrollRight() {
     <div
       class="w-screen pr-24 lg:mx-24 lg:w-[800px] lg:pr-0"
     >
-      <div class="mb-4 mr-8 text-4xl font-bold text-right">
+      <div class="animate__animated animate__fadeInUp mb-4 mr-8 text-4xl font-bold text-right">
         {{ content?.title }}
       </div>
       <div class="flex items-center">
