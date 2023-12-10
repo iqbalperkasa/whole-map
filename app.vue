@@ -4,6 +4,9 @@ enum Page {
   SECOND,
 }
 
+const { data } = await useFetch('/api/content');
+const content = data.value;
+
 const page = ref<Page>(Page.FIRST);
 const isFirstPage = computed(() => page.value === Page.FIRST);
 const isSecondPage = computed(() => page.value === Page.SECOND);
@@ -35,9 +38,9 @@ function handleScroll(ev: WheelEvent) {
 
     <nav
       v-if="isSecondPage"
-      class="uppercase text-white absolute right-10 top-10 cursor-pointer"
+      class="text-white absolute right-10 top-10 cursor-pointer"
       @click="page = Page.FIRST"
-    >Discover More</nav>
+    >{{ content?.top_nav?.label }}</nav>
 
 		<div class="w-12 absolute top-[50%] translate-y-[-50%] right-0 flex flex-col items-end">
 			<div
