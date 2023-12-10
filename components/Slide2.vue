@@ -18,23 +18,23 @@ function scrollRight() {
     class="animate__animated animate__fadeIn flex h-screen items-center justify-end bg-black bg-[url('/bg-globe/img-800x368.jpg')] bg-contain bg-center bg-no-repeat text-white lg:bg-[url('/bg-globe/img-1920x1200.jpg')]"
   >
     <div
-      class="w-screen border border-red-500 pr-24 lg:mx-24 lg:w-[800px] lg:pr-0"
+      class="w-screen border pr-24 lg:mx-24 lg:w-[800px] lg:pr-0"
     >
-      <div class="mb-4 mr-8 text-right text-4xl font-bold">
+      <div class="mb-4 mr-8 text-4xl font-bold text-right">
         {{ content?.title }}
       </div>
-      <div class="flex items-center border border-red-500">
+      <div class="flex items-center border">
         <div
           class="cursor-pointer border-[20px] border-transparent border-r-white"
         ></div>
         <div
-          class="mx-4 flex gap-4 overflow-scroll rounded-lg border border-red-500 text-black"
+          class="flex gap-4 mx-4 overflow-scroll text-black border rounded-lg"
           ref="scroller"
         >
           <div
             v-for="item in content?.slider?.items"
             :key="item.id"
-            class="h-64 w-64 shrink-0 snap-center rounded-lg bg-white/80 p-6"
+            class="w-64 h-64 p-6 rounded-lg shrink-0 snap-center bg-white/80"
           >
             <h3 class="mb-4 text-lg font-bold">{{ item.title }}</h3>
             <p class="line-clamp-6">{{ item.content }}</p>
