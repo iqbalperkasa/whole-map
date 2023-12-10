@@ -18,17 +18,17 @@ function scrollRight() {
     class="animate__animated animate__fadeIn flex h-screen items-center justify-end bg-black bg-[url('/bg-globe/img-800x368.jpg')] bg-contain bg-center bg-no-repeat text-white lg:bg-[url('/bg-globe/img-1920x1200.jpg')]"
   >
     <div
-      class="w-screen border pr-24 lg:mx-24 lg:w-[800px] lg:pr-0"
+      class="w-screen pr-24 lg:mx-24 lg:w-[800px] lg:pr-0"
     >
       <div class="mb-4 mr-8 text-4xl font-bold text-right">
         {{ content?.title }}
       </div>
-      <div class="flex items-center border">
+      <div class="flex items-center">
         <div
           class="cursor-pointer border-[20px] border-transparent border-r-white"
         ></div>
         <div
-          class="flex gap-4 mx-4 overflow-scroll text-black border rounded-lg"
+          class="flex gap-4 mx-4 overflow-scroll text-black rounded-lg"
           ref="scroller"
         >
           <div
