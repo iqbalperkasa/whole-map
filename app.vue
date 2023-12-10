@@ -8,15 +8,24 @@ const page = ref<Page>(Page.FIRST);
 const isFirstPage = computed(() => page.value === Page.FIRST);
 const isSecondPage = computed(() => page.value === Page.SECOND);
 
+const lastScroll = ref(0);
+
 function handleScroll(ev: WheelEvent) {
-  const isScrollDown = ev.deltaY > 0;
-  if (isScrollDown) page.value = Page.SECOND;
-  else page.value = Page.FIRST;
+  const isScrollDown = ev.deltaY > 0 && lastScroll.value >= 0 && ev.deltaX === -0;
+  const isScrollUp = ev.deltaY < 0 && lastScroll.value <= 0 && ev.deltaX === -0;
+
+  if (isScrollDown) {
+    page.value = Page.SECOND;
+  } else if (isScrollUp) {
+    page.value = Page.FIRST;
+  }
+
+  lastScroll.value = ev.deltaY;
 }
 </script>
 
 <template>
-  <main @wheel="handleScroll">
+  <main @wheel="handleScroll($event)">
     <Slide1
       v-if="isFirstPage"
     />
