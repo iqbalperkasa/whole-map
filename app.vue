@@ -5,6 +5,8 @@ enum Page {
 }
 
 const page = ref<Page>(Page.FIRST);
+const isFirstPage = computed(() => page.value === Page.FIRST);
+const isSecondPage = computed(() => page.value === Page.SECOND);
 
 function handleScroll(ev: WheelEvent) {
   const isScrollDown = ev.deltaY > 0;
@@ -16,26 +18,32 @@ function handleScroll(ev: WheelEvent) {
 <template>
   <main @wheel="handleScroll">
     <Slide1
-      v-if="page === Page.FIRST"
+      v-if="isFirstPage"
     />
     <Slide2
-      v-else-if="page === Page.SECOND"
+      v-else-if="isSecondPage"
     />
 
     <nav
-      v-if="page === Page.SECOND"
+      v-if="isSecondPage"
       class="uppercase text-white absolute right-10 top-10 cursor-pointer"
       @click="page = Page.FIRST"
     >Discover More</nav>
 
-		<div class="w-12 absolute top-[50%] translate-y-[-50%] right-0">
-			<div class="h-2 bg-gray-500 mb-4"></div>
-			<div class="h-2 bg-gray-500"></div>
+		<div class="w-12 absolute top-[50%] translate-y-[-50%] right-0 flex flex-col items-end">
+			<div
+        :class="`${isFirstPage ? 'w-full bg-blue-500' : 'w-1/2 bg-gray-500'} h-2 mb-4 cursor-pointer`"
+        @click="page = Page.FIRST"
+      ></div>
+      <div
+        :class="`${isSecondPage ? 'w-full bg-blue-500' : 'w-1/2 bg-gray-500'} h-2 mb-4 cursor-pointer`"
+        @click="page = Page.SECOND"
+      ></div>
 		</div>
 
 		<div
-      v-if="page === Page.FIRST"
-      class="absolute w-20 h-20 bg-red-500 bottom-0 left-[50%] translate-x-[-50%] mb-8 cursor-pointer"
+      v-if="isFirstPage"
+      class="absolute border-[20px] border-transparent border-t-blue-500 bottom-0 left-[50%] translate-x-[-50%] mb-8 cursor-pointer"
       @click="page = Page.SECOND"
     ></div>
   </main>
