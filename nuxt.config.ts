@@ -9,5 +9,5 @@ export default defineNuxtConfig({
   //   },
   // },
   css: ['animate.css/animate.min.css'],
-  modules: ["@nuxtjs/tailwindcss"],
-})
+  modules: ['@nuxtjs/tailwindcss'],
+});
