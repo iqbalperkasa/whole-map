@@ -4,12 +4,13 @@ const content = data.value?.pages[1];
 
 const scroller = ref<HTMLElement>();
 
-const currentScroll = ref(0);
-
-function scrollRight() {
+function scroll(direction: 'right' | 'left') {
   if (!scroller.value) return;
-  scroller.value.scrollLeft = currentScroll.value + 60;
-  currentScroll.value = scroller.value.scrollLeft;
+  const scrollAmount = 256 + 16;
+  scroller.value.scrollBy({
+    left: direction === 'right' ? scrollAmount : -scrollAmount,
+    behavior: 'smooth',
+  });
 }
 </script>
 
@@ -26,9 +27,10 @@ function scrollRight() {
       <div class="flex items-center">
         <div
           class="cursor-pointer border-[20px] border-transparent border-r-white"
+          @click="scroll('left')"
         ></div>
         <div
-          class="flex gap-4 mx-4 overflow-scroll text-black rounded-lg"
+          class="flex gap-4 mx-4 overflow-scroll text-black rounded-lg animate__"
           ref="scroller"
         >
           <div
@@ -42,6 +44,7 @@ function scrollRight() {
         </div>
         <div
           class="cursor-pointer border-[20px] border-transparent border-l-white"
+          @click="scroll('right')"
         ></div>
       </div>
     </div>
